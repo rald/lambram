@@ -1,0 +1,79 @@
+<!doctype hmtl>
+<html>
+  <head>
+ 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc</title>
+  </head>
+  <body>
+
+
+
+<script src="calc.js"></script>
+
+<script type="module">
+
+
+import Color from "./Color.mjs";
+import pal from "./sweetie-16.mjs";
+import Turtle from "./Turtle.mjs";
+
+
+//  -----------------------
+//  --- Calculate Below ---
+//	-----------------------
+
+const C=make('canvas');
+const c=gctx(C);
+C.width=320;
+C.height=240;
+add(body,C);
+
+const r=()=>{
+	var cx=(window.innerWidth-C.width)/2;
+	var cy=(window.innerHeight-C.height)/2;
+	C.style.position="absolute";
+	C.style.left=`${cx}px`;
+	C.style.top=`${cy}px`;
+	body.style.background=rgba(pal[15]);
+}
+window.onresize=r;
+r();
+
+const star=(t,s)=>{
+	for(var i=0;i<5;i++) {
+		t.move(s);
+		t.turn(144);
+	}
+}
+
+const poly=(t,n,s)=>{
+	for(var i=0;i<n;i++) {
+		t.move(s);
+		t.turn(360/n);
+	}
+}
+
+clear(c,rgba(pal[0]));
+
+const t=new Turtle(c,C.width/2,C.height/2,0,rgba(pal[12]));
+
+c.translate(0.5,0.5); // fix pixel overlap
+
+c.lineWidth=5;
+c.lineJoin="round";
+c.lineCap="round";
+
+star(t,100);
+t.jump_rel(-10,-10);
+t.face(180);
+poly(t,5,50);
+
+
+
+//  -----------
+//  --- End ---
+//	-----------
+
+</script>    
+  </body>
+</html>
