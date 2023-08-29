@@ -1,0 +1,93 @@
+<!doctype hmtl>
+<html>
+  <head>
+ 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc</title>
+  </head>
+  <body>
+
+
+
+
+<script>
+
+doc=document;
+body=doc.body;
+say=(s)=>doc.writeln(`${s}<br>`);
+str=(n,b)=>n.toString(b);
+pads=(s,p,d)=>s.padStart(p,d);
+pade=(s,p,d)=>s.padEnd(p,d);
+upr=(s)=>s.toUpperCase();
+lwr=(s)=>s.ToLowerCase();
+hex=(d,l=0)=>upr(pads(str(d,16),l,"0"));
+
+
+
+//	------------
+//	--- ASM  ---
+//	------------
+
+
+
+class VM {
+	constructor() {
+		this.smm=1002;
+		this.sst=256;
+		this.sfb=256;
+		
+		this.m=new Uint8Array(this.smm);
+		
+		let a=this.smm-1;
+		this.aax=a;
+		a-=2;
+		this.ast=a;
+		a-=this.sst;
+		this.afb=a;
+
+		load(fn,this.asm);
+	}
+	
+	asm(p) {
+		var q=false;
+		while(!q) {
+			if(i<strlen(p))
+		}
+	}
+	
+	load(url,cb) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET',url);
+		xhr.onreadystatechange = function() {
+  		cb(xhr.responseText);
+		}
+		xhr.send();
+	}
+}
+
+
+//	---- ---- ---- ---- ---- ---- ---- ----
+
+
+//  ---------------------
+//  --- Program Below ---
+//	---------------------
+
+var vm=new VM();
+
+body.style.fontFamily="monospace";
+body.style.fontSize="16px";
+
+say("aax: "+hex(vm.aax,4));
+say("ast: "+hex(vm.ast,4));
+say("afb: "+hex(vm.afb,4));
+
+
+//  -------------------
+//  --- End Program ---
+//	-------------------
+
+
+
+</script>    
+  </body>
+</html>
